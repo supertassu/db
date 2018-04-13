@@ -1,5 +1,6 @@
 package me.tassu.db.impl.mysql;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.collect.Sets;
 import me.tassu.db.Database;
 import me.tassu.db.column.Column;
@@ -84,6 +85,18 @@ public class MySQLDatabase implements Database {
         }
     }
 
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("connection", connection)
+                .add("host", host)
+                .add("database", database)
+                .add("username", username)
+                .add("password", password)
+                .add("port", port)
+                .toString();
+    }
+
     public static final class Builder {
         private String host;
         private String database;
@@ -91,8 +104,7 @@ public class MySQLDatabase implements Database {
         private String password;
         private int port;
 
-        private Builder() {
-        }
+        private Builder() {}
 
         public MySQLDatabase build() {
             return new MySQLDatabase(this);

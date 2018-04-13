@@ -1,8 +1,6 @@
 package me.tassu.db.impl.mysql;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.google.common.base.MoreObjects;
 import me.tassu.db.column.Column;
 import me.tassu.db.util.DataType;
 
@@ -24,5 +22,13 @@ public class MySQLColumn implements Column {
     @Override
     public DataType getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("name", name)
+                .add("type", type)
+                .toString();
     }
 }

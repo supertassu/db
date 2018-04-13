@@ -1,5 +1,7 @@
 package me.tassu.db.impl.mysql;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
 import me.tassu.db.column.Column;
 import me.tassu.db.table.Table;
 
@@ -34,5 +36,14 @@ public class MySQLTable implements Table {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("name", name)
+                .add("columns", columns)
+                .add("primaryColumns", primaryColumns)
+                .toString();
     }
 }
