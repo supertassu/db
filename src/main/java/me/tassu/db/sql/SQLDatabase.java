@@ -1,18 +1,19 @@
-package me.tassu.db;
+package me.tassu.db.sql;
 
-import me.tassu.db.column.Column;
-import me.tassu.db.table.Table;
-import me.tassu.db.util.DataType;
+import me.tassu.db.sql.column.Column;
+import me.tassu.db.sql.table.Table;
+import me.tassu.db.sql.util.DataType;
 
 import java.sql.Connection;
 
 /**
- * Represents a database connection.
+ * Represents a sql (tables etc) database connection.
  * @author tassu
  * @version 1.0
  * @since 1.0
+ * @see me.tassu.db.kv.KeyValueDatabase
  */
-public interface Database {
+public interface SQLDatabase {
 
     /**
      * @return the connection to database

@@ -1,6 +1,6 @@
-package me.tassu.db.table;
+package me.tassu.db.sql.table;
 
-import me.tassu.db.column.Column;
+import me.tassu.db.sql.column.Column;
 
 /**
  * Represents a table on the database.

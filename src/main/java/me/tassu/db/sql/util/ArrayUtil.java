@@ -1,4 +1,4 @@
-package me.tassu.db.util;
+package me.tassu.db.sql.util;
 
 import java.util.Arrays;
 

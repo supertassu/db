@@ -1,11 +1,11 @@
-package me.tassu.db.impl.mysql;
+package me.tassu.db.impl.sql.mysql;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.Sets;
-import me.tassu.db.Database;
-import me.tassu.db.column.Column;
-import me.tassu.db.table.Table;
-import me.tassu.db.util.DataType;
+import me.tassu.db.sql.SQLDatabase;
+import me.tassu.db.sql.column.Column;
+import me.tassu.db.sql.table.Table;
+import me.tassu.db.sql.util.DataType;
 
 import java.sql.*;
 
@@ -13,7 +13,7 @@ import java.sql.*;
  * Represents a MySQL database connection.
  * {@inheritDoc}
  */
-public class MySQLDatabase implements Database {
+public class MySQLDatabase implements SQLDatabase {
 
     private Connection connection;
 

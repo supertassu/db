@@ -1,8 +1,8 @@
-package me.tassu.db.impl.mysql;
+package me.tassu.db.impl.sql.mysql;
 
 import com.google.common.base.MoreObjects;
-import me.tassu.db.column.Column;
-import me.tassu.db.util.DataType;
+import me.tassu.db.sql.column.Column;
+import me.tassu.db.sql.util.DataType;
 
 /**
  * {@inheritDoc}

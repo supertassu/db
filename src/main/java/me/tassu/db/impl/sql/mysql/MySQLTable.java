@@ -1,16 +1,15 @@
-package me.tassu.db.impl.mysql;
+package me.tassu.db.impl.sql.mysql;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.Sets;
-import me.tassu.db.column.Column;
-import me.tassu.db.table.Table;
+import me.tassu.db.sql.column.Column;
+import me.tassu.db.sql.table.Table;
 
 import java.sql.SQLException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static me.tassu.db.impl.mysql.MySQLDatabase.getTypeAsString;
-import static me.tassu.db.util.ArrayUtil.isStringInArray;
+import static me.tassu.db.sql.util.ArrayUtil.isStringInArray;
 
 public class MySQLTable implements Table {
 
@@ -48,6 +47,12 @@ public class MySQLTable implements Table {
                 .toString();
     }
 
+    /**
+     * Initializes this table with specified database
+     * @param database the database
+     * @return was the initialization successful
+     * @throws SQLException thrown when something went wrong
+     */
     boolean initialize(MySQLDatabase database) throws SQLException {
         return database.getConnection().prepareStatement(generateInitializationSchema()).execute();
     }
@@ -60,7 +65,7 @@ public class MySQLTable implements Table {
         builder.append("CREATE TABLE `").append(this.getName()).append("` (");
 
         columns.stream().map(it -> (MySQLColumn) it).forEach(it -> {
-            builder.append("`").append(it.getName()).append("` ").append(getTypeAsString(it.getType()));
+            builder.append("`").append(it.getName()).append("` ").append(MySQLDatabase.getTypeAsString(it.getType()));
             if (primaryColumns.contains(it.getName())) {
                 builder.append(" PRIMARY KEY NOT NULL");
             } else if (!it.doesAllowNull()) {
