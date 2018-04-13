@@ -51,7 +51,7 @@ public class MySQLDatabase implements Database {
             ResultSet set = metaData.getTables(null, null, table.getName(), new String[] {"TABLE"});
 
             if (!set.next()) {
-                table.initialize(this);
+                if (!table.initialize(this)) throw new SQLException("could not initialize table");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -62,6 +62,10 @@ public class MySQLDatabase implements Database {
 
     @Override
     public String getTypeAsString(DataType type) {
+        return getTypeString(type);
+    }
+
+    static String getTypeString(DataType type) {
         switch (type) {
             case STRING:
                 return "TEXT";

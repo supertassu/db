@@ -7,4 +7,7 @@ public interface Column {
     String getName();
     DataType getType();
 
+    Column setAllowNull(boolean allowNull);
+    boolean doesAllowNull();
+
 }

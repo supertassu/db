@@ -8,6 +8,7 @@ public class MySQLColumn implements Column {
 
     private final String name;
     private final DataType type;
+    private boolean doesAllowNull = false;
 
     MySQLColumn(String name, DataType type) {
         this.name = name;
@@ -25,10 +26,22 @@ public class MySQLColumn implements Column {
     }
 
     @Override
+    public Column setAllowNull(boolean allowNull) {
+        this.doesAllowNull = allowNull;
+        return this;
+    }
+
+    @Override
+    public boolean doesAllowNull() {
+        return doesAllowNull;
+    }
+
+    @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("name", name)
                 .add("type", type)
+                .add("doesAllowNull", doesAllowNull)
                 .toString();
     }
 }
