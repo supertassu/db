@@ -22,7 +22,7 @@ public class MySQLTableTest {
 
     @Test
     public void testTwoColumnsInitSchema() {
-        assertEquals("CREATE TABLE `hi_this_is_a_table` (`boolean` BOOLEAN,`field` TEXT NOT NULL);",
+        assertEquals("CREATE TABLE `hi_this_is_a_table` (`field` TEXT NOT NULL,`boolean` BOOLEAN);",
                 new MySQLTable("hi_this_is_a_table", Sets.newHashSet(new MySQLColumn("boolean", DataType.BOOLEAN)
                         .setAllowNull(true), new MySQLColumn("field", DataType.STRING)))
                         .generateInitializationSchema());

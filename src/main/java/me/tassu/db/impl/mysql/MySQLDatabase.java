@@ -32,6 +32,10 @@ public class MySQLDatabase implements Database {
         return new Builder();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
@@ -44,11 +48,17 @@ public class MySQLDatabase implements Database {
         return connection;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Column column(String name, DataType dataType) {
         return new MySQLColumn(name, dataType);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Table table(String name, Column... columns) {
         MySQLTable table = new MySQLTable(name, Sets.newHashSet(columns));
@@ -67,6 +77,10 @@ public class MySQLDatabase implements Database {
         return table;
     }
 
+    /**
+     * @param type data type
+     * @return specified data type as a string to be used in queries
+     */
     static String getTypeAsString(DataType type) {
         switch (type) {
             case STRING:
@@ -87,6 +101,11 @@ public class MySQLDatabase implements Database {
     private String host, database, username, password;
     private int port;
 
+    /**
+     * Opens a database connection
+     * @throws SQLException thrown when the connection could not be opened
+     * @throws ClassNotFoundException thrown when there is no mysql driver installed
+     */
     private void openConnection() throws SQLException, ClassNotFoundException {
         if (connection != null && !connection.isClosed()) {
             return;
@@ -102,6 +121,9 @@ public class MySQLDatabase implements Database {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
@@ -114,6 +136,9 @@ public class MySQLDatabase implements Database {
                 .toString();
     }
 
+    /**
+     * Used for creating a new {@link MySQLDatabase}
+     */
     public static final class Builder {
         private String host;
         private String database;

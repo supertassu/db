@@ -1,7 +1,6 @@
 package me.tassu.db.table;
 
 import me.tassu.db.column.Column;
-import me.tassu.db.util.DataType;
 
 /**
  * Represents a table on the database.
