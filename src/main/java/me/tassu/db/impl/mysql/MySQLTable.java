@@ -53,6 +53,8 @@ public class MySQLTable implements Table {
     }
 
     String generateInitializationSchema() {
+        if (columns == null || columns.isEmpty()) throw new UnsupportedOperationException("table requires at least one column");
+
         final StringBuilder builder = new StringBuilder();
 
         builder.append("CREATE TABLE `").append(this.getName()).append("` (");
