@@ -15,7 +15,6 @@ public class MySQLDatabase implements Database {
     private Connection connection;
 
     private MySQLDatabase(Builder builder) {
-        this.connection = builder.connection;
         this.host = builder.host;
         this.database = builder.database;
         this.username = builder.username;
@@ -28,7 +27,15 @@ public class MySQLDatabase implements Database {
     }
 
     public Connection getConnection() {
-        return null;
+        try {
+            if (connection == null || connection.isClosed()) {
+                openConnection();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return connection;
     }
 
     @Override
@@ -62,7 +69,7 @@ public class MySQLDatabase implements Database {
     private String host, database, username, password;
     private int port;
 
-    public void openConnection() throws SQLException, ClassNotFoundException {
+    private void openConnection() throws SQLException, ClassNotFoundException {
         if (connection != null && !connection.isClosed()) {
             return;
         }
@@ -78,7 +85,6 @@ public class MySQLDatabase implements Database {
     }
 
     public static final class Builder {
-        private Connection connection;
         private String host;
         private String database;
         private String username;
@@ -90,11 +96,6 @@ public class MySQLDatabase implements Database {
 
         public MySQLDatabase build() {
             return new MySQLDatabase(this);
-        }
-
-        public Builder connection(Connection connection) {
-            this.connection = connection;
-            return this;
         }
 
         public Builder host(String host) {
