@@ -1,7 +1,6 @@
 package me.tassu.db.impl.mysql;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 import me.tassu.db.column.Column;
 import me.tassu.db.table.Table;
@@ -10,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static me.tassu.db.impl.mysql.MySQLDatabase.getTypeString;
+import static me.tassu.db.impl.mysql.MySQLDatabase.getTypeAsString;
 import static me.tassu.db.util.ArrayUtil.isStringInArray;
 
 public class MySQLTable implements Table {
@@ -59,7 +58,7 @@ public class MySQLTable implements Table {
         builder.append("CREATE TABLE `").append(this.getName()).append("` (");
 
         columns.stream().map(it -> (MySQLColumn) it).forEach(it -> {
-            builder.append("`").append(it.getName()).append("` ").append(getTypeString(it.getType()));
+            builder.append("`").append(it.getName()).append("` ").append(getTypeAsString(it.getType()));
             if (primaryColumns.contains(it.getName())) {
                 builder.append(" PRIMARY KEY NOT NULL");
             } else if (!it.doesAllowNull()) {

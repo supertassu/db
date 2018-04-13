@@ -20,7 +20,7 @@ public class DBExample {
                 database.column("random_column", DataType.STRING),
                 database.column("another_column", DataType.INTEGER),
                 database.column("is_it_good", DataType.BOOLEAN),
-                database.column("how_am_i_supposed_to_get_ideas_from_names", DataType.NUMBER),
+                database.column("how_am_i_supposed_to_get_ideas_from_names", DataType.NUMBER).setAllowNull(false),
                 database.column("im_finally_done", DataType.LONG_INTEGER)
         };
 

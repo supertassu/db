@@ -60,12 +60,7 @@ public class MySQLDatabase implements Database {
         return table;
     }
 
-    @Override
-    public String getTypeAsString(DataType type) {
-        return getTypeString(type);
-    }
-
-    static String getTypeString(DataType type) {
+    static String getTypeAsString(DataType type) {
         switch (type) {
             case STRING:
                 return "TEXT";

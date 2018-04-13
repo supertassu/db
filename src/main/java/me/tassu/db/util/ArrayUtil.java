@@ -2,6 +2,10 @@ package me.tassu.db.util;
 
 import java.util.Arrays;
 
+/**
+ * Utility for working with {@link String[]}s.
+ * @author tassu
+ */
 public class ArrayUtil {
 
     public static boolean isStringInArray(String string, String... array) {

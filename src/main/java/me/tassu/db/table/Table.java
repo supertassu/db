@@ -3,12 +3,29 @@ package me.tassu.db.table;
 import me.tassu.db.column.Column;
 import me.tassu.db.util.DataType;
 
+/**
+ * Represents a table on the database.
+ * @author tassu
+ * @version 1.0
+ * @since 1.0
+ */
 public interface Table {
 
+    /**
+     * @return the name of this table
+     */
     String getName();
 
+    /**
+     * @return all columns of this table
+     */
     Column[] getColumns();
 
+    /**
+     * sets primary columns of this table
+     * @param identifiers primary key column ids
+     * @return builder
+     */
     Table setPrimaryColumns(String... identifiers);
 
 }
