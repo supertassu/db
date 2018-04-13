@@ -5,7 +5,7 @@ import com.google.common.collect.Sets;
 import me.tassu.db.sql.SQLDatabase;
 import me.tassu.db.sql.column.Column;
 import me.tassu.db.sql.table.Table;
-import me.tassu.db.sql.util.DataType;
+import me.tassu.db.util.DataType;
 
 import java.sql.*;
 
@@ -144,7 +144,7 @@ public class MySQLDatabase implements SQLDatabase {
         private String database;
         private String username;
         private String password;
-        private int port;
+        private int port = 3306;
 
         private Builder() {}
 

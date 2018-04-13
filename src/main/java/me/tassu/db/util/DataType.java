@@ -1,4 +1,4 @@
-package me.tassu.db.sql.util;
+package me.tassu.db.util;
 
 /**
  * Represents a type of a column in a table.

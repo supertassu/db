@@ -1,6 +1,7 @@
 package me.tassu.db.impl.sql.mysql;
 
 import com.google.common.base.MoreObjects;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import me.tassu.db.sql.column.Column;
 import me.tassu.db.sql.table.Table;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static me.tassu.db.sql.util.ArrayUtil.isStringInArray;
+import static me.tassu.db.util.ArrayUtil.isStringInArray;
 
 public class MySQLTable implements Table {
 
@@ -18,6 +19,8 @@ public class MySQLTable implements Table {
     private Set<String> primaryColumns = Sets.newHashSet();
 
     MySQLTable(String name, Set<Column> columns) {
+        if (columns == null || columns.isEmpty()) throw new IllegalArgumentException("table requires at least one column");
+        Preconditions.checkNotNull(name);
         this.name = name;
         this.columns = columns;
     }

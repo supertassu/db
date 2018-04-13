@@ -3,7 +3,7 @@ package me.tassu.db.example;
 import me.tassu.db.impl.sql.mysql.MySQLDatabase;
 import me.tassu.db.sql.column.Column;
 import me.tassu.db.sql.table.Table;
-import me.tassu.db.sql.util.DataType;
+import me.tassu.db.util.DataType;
 
 public class DBExample {
 

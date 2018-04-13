@@ -1,8 +1,9 @@
 package me.tassu.db.impl.sql.mysql;
 
 import com.google.common.base.MoreObjects;
+import com.google.common.base.Preconditions;
 import me.tassu.db.sql.column.Column;
-import me.tassu.db.sql.util.DataType;
+import me.tassu.db.util.DataType;
 
 /**
  * {@inheritDoc}
@@ -19,6 +20,8 @@ public class MySQLColumn implements Column {
      * @param type column type
      */
     MySQLColumn(String name, DataType type) {
+        Preconditions.checkNotNull(name);
+        Preconditions.checkNotNull(type);
         this.name = name;
         this.type = type;
     }

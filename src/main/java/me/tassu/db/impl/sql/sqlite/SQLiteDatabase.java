@@ -3,7 +3,7 @@ package me.tassu.db.impl.sql.sqlite;
 import me.tassu.db.sql.SQLDatabase;
 import me.tassu.db.sql.column.Column;
 import me.tassu.db.sql.table.Table;
-import me.tassu.db.sql.util.DataType;
+import me.tassu.db.util.DataType;
 
 import java.sql.Connection;
 
