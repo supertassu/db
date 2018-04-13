@@ -7,9 +7,7 @@ import me.tassu.db.column.Column;
 import me.tassu.db.table.Table;
 import me.tassu.db.util.DataType;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class MySQLDatabase implements Database {
 
@@ -46,7 +44,20 @@ public class MySQLDatabase implements Database {
 
     @Override
     public Table table(String name, Column... columns) {
-        return new MySQLTable(name, Sets.newHashSet(columns));
+        MySQLTable table = new MySQLTable(name, Sets.newHashSet(columns));
+
+        try {
+            DatabaseMetaData metaData = getConnection().getMetaData();
+            ResultSet set = metaData.getTables(null, null, table.getName(), new String[] {"TABLE"});
+
+            if (!set.next()) {
+                table.initialize(this);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return table;
     }
 
     @Override

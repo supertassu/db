@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 import me.tassu.db.column.Column;
 import me.tassu.db.table.Table;
 
+import java.sql.SQLException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -46,4 +47,9 @@ public class MySQLTable implements Table {
                 .add("primaryColumns", primaryColumns)
                 .toString();
     }
+
+    void initialize(MySQLDatabase database) throws SQLException {
+        throw new UnsupportedOperationException("Not implemented yet ");
+    }
+
 }
