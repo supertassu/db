@@ -29,7 +29,7 @@ public class MySQLTable implements Table {
     }
 
     @Override
-    public Table setPrimaryColumns(String... identifiers) {
+    public MySQLTable setPrimaryColumns(String... identifiers) {
         primaryColumns = columns.stream().filter(column -> isStringInArray(column.getName(), identifiers)).map(Column::getName).collect(Collectors.toSet());
         return this;
     }
@@ -52,7 +52,7 @@ public class MySQLTable implements Table {
         return database.getConnection().prepareStatement(generateInitializationSchema()).execute();
     }
 
-    private String generateInitializationSchema() {
+    String generateInitializationSchema() {
         final StringBuilder builder = new StringBuilder();
 
         builder.append("CREATE TABLE `").append(this.getName()).append("` (");

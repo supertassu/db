@@ -9,6 +9,10 @@ import me.tassu.db.util.DataType;
 
 import java.sql.*;
 
+/**
+ * Represents a MySQL database connection.
+ * {@inheritDoc}
+ */
 public class MySQLDatabase implements Database {
 
     private Connection connection;
@@ -21,6 +25,9 @@ public class MySQLDatabase implements Database {
         this.port = builder.port;
     }
 
+    /**
+     * @return a builder to create a mysql database
+     */
     public static Builder builder() {
         return new Builder();
     }
