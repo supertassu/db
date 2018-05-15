@@ -18,7 +18,9 @@ public interface SQLDatabase {
     /**
      * @return the connection to database
      */
-    Connection getConnection();
+    default Connection getConnection() {
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
 
     /**
      * Creates and initializes a column for this database.
@@ -26,7 +28,9 @@ public interface SQLDatabase {
      * @param dataType column type
      * @return the column
      */
-    Column column(String name, DataType dataType);
+    default Column column(String name, DataType dataType) {
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
 
     /**
      * Creates and initializes a table for this database.
@@ -34,6 +38,8 @@ public interface SQLDatabase {
      * @param columns table columns
      * @return the table
      */
-    Table table(String name, Column... columns);
+    default Table table(String name, Column... columns) {
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
 
 }

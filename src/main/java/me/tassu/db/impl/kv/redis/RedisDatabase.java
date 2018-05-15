@@ -12,6 +12,7 @@ public class RedisDatabase implements KeyValueDatabase {
 
     private Jedis jedis;
 
-
-
+    public RedisDatabase(Jedis jedis) {
+        throw new UnsupportedOperationException( "Not inplemented yet." );
+    }
 }

@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import me.tassu.db.sql.column.Column;
+import me.tassu.db.sql.query.Query;
 import me.tassu.db.sql.table.Table;
 
 import java.sql.SQLException;
@@ -83,4 +84,8 @@ public class MySQLTable implements Table {
         return builder.toString();
     }
 
+    @Override
+    public Query prepareQuery(Object... arguments) {
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
 }

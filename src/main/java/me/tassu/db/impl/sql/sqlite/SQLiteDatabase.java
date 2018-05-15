@@ -14,6 +14,10 @@ import java.sql.Connection;
  */
 public class SQLiteDatabase implements SQLDatabase {
 
+    public SQLiteDatabase() {
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
+
     /**
      * {@inheritDoc}
      */
